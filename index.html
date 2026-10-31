@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172554">
+    <meta name="description" content="Subscribe this device to receive push notifications.">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Push notifications</title>
+  </head>
+  <body>
+    <main class="layout">
+      <section class="card">
+        <p class="eyebrow">Progressive web app</p>
+        <h1>Push notifications</h1>
+        <p>Subscribe this device to receive updates, even when this app is closed.</p>
+        <button id="subscribe" type="button">Enable notifications</button>
+        <p id="status" role="status" aria-live="polite">Checking browser support…</p>
+      </section>
+
+      <section class="card" aria-labelledby="send-heading">
+        <p class="eyebrow">Sender</p>
+        <h2 id="send-heading">Send a notification</h2>
+        <p>Send a push to every subscribed device.</p>
+        <form id="send-form">
+          <label for="sender-token">Sender token</label>
+          <input
+            id="sender-token"
+            name="token"
+            type="password"
+            autocomplete="new-password"
+            required
+            spellcheck="false"
+          >
+          <p class="hint">Used for this request only; it is not saved.</p>
+
+          <label for="notification-title">Title</label>
+          <input id="notification-title" name="title" type="text" maxlength="120" required>
+
+          <label for="notification-body">Message</label>
+          <textarea id="notification-body" name="body" maxlength="1000" rows="3"></textarea>
+
+          <label for="notification-url">Open this path when tapped</label>
+          <input id="notification-url" name="url" type="text" value="/" maxlength="2048">
+          <p class="hint">Use a path on this app, such as /updates.</p>
+
+          <button id="send-button" type="submit">Send push notification</button>
+          <p id="send-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
